@@ -35,6 +35,11 @@ window.GUIDE = {
     updated: "November 2, 2026",
     takeLabel: "Parker's take",
     picksLabel: "Parker's picks",
+    // Only the Legislature races differ by district. Share a link ending in ?d=2 to open on District 2.
+    districts: [
+      { id: "15", label: "Downtown", sub: "District 15", where: "Downtown Sioux Falls · District 15 · Minnehaha County" },
+      { id: "2", label: "Southeast", sub: "District 2 · incl. Brandon", where: "Southeast Sioux Falls · District 2 · Minnehaha County" },
+    ],
     takeByline: "One person's opinion.",
   },
 
@@ -292,11 +297,12 @@ Running mate Steven McCleerey is a Sisseton crop and livestock farmer, a state r
     {
       id: "legislature",
       picks: ``,
-      title: "Legislature · District 15",
-      blurb: `Downtown is District 15. Near 14th St, Cliff Ave, or I-29? <a href="https://vip.sdsos.gov/VIPLogin.aspx" target="_blank" rel="noopener">Confirm your district</a>.`,
+      title: "Legislature",
+      blurb: `The only races that change with your address. Downtown is District 15; far southeast Sioux Falls (around 41st St &amp; Six Mile Rd) and Brandon are District 2. Not sure? <a href="https://vip.sdsos.gov/VIPLogin.aspx" target="_blank" rel="noopener">Confirm your district</a>.`,
       items: [
         {
           id: "sd15-senate",
+          district: "15",
           kind: "race",
           title: "State Senate",
           sub: "District 15 · Vote for 1 · 2-year term",
@@ -313,6 +319,7 @@ Running mate Steven McCleerey is a Sisseton crop and livestock farmer, a state r
         },
         {
           id: "sd15-house",
+          district: "15",
           kind: "race",
           title: "State House",
           sub: "District 15 · Vote for up to 2 · 2-year term",
@@ -327,6 +334,39 @@ Running mate Steven McCleerey is a Sisseton crop and livestock farmer, a state r
           ],
           contrast: `All four talk affordability and data centers. Democrats lean toward state programs (meals, child care, wages). Republicans lean toward spending restraint, property rights, and local control. The current state penitentiary is in District 15.`,
           sources: [SRC.list, SRC.sfs, { label: "KELO: House District 15", url: "https://www.aol.co.uk/articles/running-house-district-15-192459000.html" }],
+          take: ``,
+        },
+        {
+          id: "sd2-senate",
+          district: "2",
+          kind: "race",
+          title: "State Senate",
+          sub: "District 2 · Vote for 1 · 2-year term · Unopposed",
+          q: "District 2's one seat in the state Senate.",
+          gist: `The Legislature writes state law and the budget. Republicans hold more than two-thirds of both chambers. Only one candidate is running, so he wins either way. You can vote for him or leave it blank.`,
+          cands: [
+            { name: "John Sjaarda", party: "R", note: "Current state rep", line: "Farmer near Valley Springs; District 2 state rep since 2023.", more: `Won the June Republican primary over fellow District 2 Rep. David Kull, about 62% to 38%. No Democrat filed for the seat.` },
+          ],
+          sources: [SRC.list, { label: "SDPB: Meet John Sjaarda", url: "https://www.sdpb.org/2026-08-31/meet-the-candidates-john-sjaarda" }],
+          take: ``,
+        },
+        {
+          id: "sd2-house",
+          district: "2",
+          kind: "race",
+          title: "State House",
+          sub: "District 2 · Vote for up to 2 · 2-year term · Open seats",
+          votes: 2,
+          q: "District 2's two seats in the state House.",
+          gist: `Top two vote-getters win. Both seats are open because Reps. Sjaarda and Kull ran for the Senate. You can pick two, one, or none, and mix parties.`,
+          cands: [
+            { name: "Adam Long", party: "R", line: "Owner of 605 Signs. Navy and Air Force veteran, former police officer, Split Rock volunteer firefighter.", focus: ["Review budgets before new taxes", "Property tax relief via spending control", "Public schools and school choice", "Data centers can't stick locals with costs"], more: `Top vote-getter in the GOP primary. Wants zero-based budgeting, where programs justify their budgets from scratch. Says data centers and tax incentives should be transparent and shouldn't leave taxpayers or utility customers with long-term costs.` },
+            { name: "Manuel Luschas", party: "R", line: "Electrical engineer (22 years in communications hardware) and farmer; moved to Brandon from Silicon Valley in 2020.", focus: ["Property tax reform", "Property rights", "Limit digital surveillance", "Self-funded campaign"], more: `Property taxes are his top issue; he says rising bills could force people on fixed incomes to sell their homes. He runs as an outsider, criticizing the outgoing District 2 Republicans for siding with "big money corporate interests."` },
+            { name: "Blake Rife", party: "D", line: "Nurse; previously a teacher and rancher.", focus: ["More competitive schools", "Rural health care access", "Workforce and affordability", "More competition among cattle buyers"], more: `Won the Democratic primary. Points to Brandon's schools as a model and wants SD to compete harder on education. Wants rural areas to have good health care so people can keep working.` },
+          ],
+          chart: { type: "bars", title: "2026 Republican primary (top two advanced)", rows: [{ label: "Long", v: 32.6, c: "R" }, { label: "Luschas", v: 26.6, c: "R" }, { label: "Lane", v: 22.7, c: "muted" }, { label: "Hill", v: 18.2, c: "muted" }], max: 40, note: "Rife was the Democratic nominee." },
+          contrast: `Both Republicans lead with property taxes and spending restraint; Luschas runs as more of an outsider. Rife focuses on schools, health care, and workers. With two votes, you can split between parties.`,
+          sources: [SRC.list, { label: "SDPB: Meet Adam Long", url: "https://www.sdpb.org/2026-08-31/meet-the-candidates-adam-long" }, { label: "SDPB: Meet Manuel Luschas", url: "https://www.sdpb.org/2026-08-31/meet-the-candidates-manuel-luschas" }, { label: "SDPB: Meet Blake Rife", url: "https://www.sdpb.org/2026-08-31/meet-the-candidates-blake-rife" }, { label: "Minnehaha County primary returns", url: "https://web.minnehahacounty.gov/dept/au/election/electionReturns/26primary.php" }],
           take: ``,
         },
       ],

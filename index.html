@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>2026 Ballot · Sioux Falls</title>
-<meta name="description" content="Quick-reference guide to the Nov 3, 2026 South Dakota ballot for downtown Sioux Falls (District 15).">
+<meta name="description" content="Quick-reference guide to the Nov 3, 2026 South Dakota ballot for Sioux Falls: downtown (District 15) and southeast Sioux Falls / Brandon (District 2).">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -22,12 +22,13 @@
   <section class="hero">
     <div class="kicker">General election · Tue, Nov 3</div>
     <h1>Your ballot, at a glance.</h1>
-    <p class="where">Downtown Sioux Falls · District 15 · Minnehaha County</p>
+    <p class="where" data-where>Sioux Falls · Minnehaha County</p>
+    <div class="hero-switch"><div class="lbl">Where do you live?</div><div data-switch></div></div>
 
     <div class="tiles">
       <div class="tile"><div class="lbl">Election Day</div><div class="big" id="days">–</div></div>
       <div class="tile"><div class="lbl">Polls</div><div class="big">7–7<small>a.m.–p.m. CT</small></div></div>
-      <div class="tile"><div class="lbl">On the ballot</div><div class="big" id="n-items">18</div></div>
+      <div class="tile"><div class="lbl">Items</div><div class="big" id="n-items">18</div></div>
     </div>
   </section>
 
@@ -49,7 +50,7 @@
 
   <section class="block" id="ballot-head">
     <div class="sec-head"><h2>My ballot</h2><span class="count" id="glance-count"></span></div>
-    <p class="print-only">General election · Tue, Nov 3 · Polls 7 a.m.–7 p.m. CT · Bring a photo ID</p>
+    <p class="print-only"><span data-where></span> · General election · Tue, Nov 3 · Polls 7 a.m.–7 p.m. CT · Bring a photo ID</p>
     <div class="card glance">
       <div class="progress"><i id="progress"></i></div>
       <div id="glance"></div>

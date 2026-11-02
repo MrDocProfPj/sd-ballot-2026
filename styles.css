@@ -73,15 +73,30 @@ strong { font-weight: 650; }
 .hero h1 { font-family: var(--font-d); font-size: 2.25rem; line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 8px; font-weight: 750; }
 .hero .where { color: var(--text-2); font-size: 1.0625rem; }
 
-.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(6.25em, 1fr)); gap: 10px; margin: 20px 0 0; }
-.tile { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; }
+.tiles { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0 0; }
+.tile { flex: 1 1 auto; min-width: 0; background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; }
 .tile .lbl { font-size: 0.8125rem; color: var(--text-3); font-weight: 600; }
 .tile .big { font-family: var(--font-d); font-size: 1.875rem; font-weight: 750; letter-spacing: -0.02em; line-height: 1.2; margin-top: 4px; font-variant-numeric: tabular-nums; }
 .tile .big small { font-size: 0.9375rem; font-weight: 500; color: var(--text-3); margin-left: 4px; letter-spacing: 0; }
 
+/* ---------- district switch ---------- */
+.hero-switch { margin-top: 18px; }
+.hero-switch .lbl { font-size: 0.8125rem; font-weight: 650; color: var(--text-3); margin-bottom: 8px; }
+.dswitch { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(9.5em, 100%), 1fr)); gap: 6px; padding: 5px; border-radius: 14px; background: var(--card); border: 1px solid #2a2a31; }
+.sec-blurb + .dswitch { margin: -6px 0 20px; }
+.dswitch button { display: flex; flex-direction: column; align-items: flex-start; gap: 1px; text-align: left; cursor: pointer; border: 0; border-radius: 10px; padding: 10px 14px; background: transparent; color: var(--text-2); -webkit-tap-highlight-color: transparent; }
+.dswitch button b { font-size: 1rem; font-weight: 700; color: var(--text); }
+.dswitch button small { font-size: 0.8125rem; }
+.dswitch button[aria-pressed="true"] { background: var(--text); color: #3a3a42; }
+.dswitch button[aria-pressed="true"] b { color: #000; }
+
 /* ---------- generic card ---------- */
-.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 18px; }
-.card + .card, .block + .block { margin-top: 12px; }
+.card { background: var(--card); border: 1px solid #2a2a31; border-radius: var(--r); padding: 20px; }
+.card + .card { margin-top: 14px; }
+.block + .block { margin-top: 12px; }
+/* Race cards: clear air between them so each reads as its own unit. */
+.item + .item { margin-top: 28px; }
+.item-head { padding-bottom: 2px; }
 
 .rows > li { display: grid; grid-template-columns: 7em 1fr; gap: 12px; padding: 11px 0; border-top: 1px solid var(--line); font-size: 0.9688rem; }
 .rows > li:first-child { border-top: 0; padding-top: 2px; }
@@ -90,10 +105,12 @@ strong { font-weight: 650; }
 .rows .v .sub { color: var(--text-2); }
 
 /* ---------- section headings ---------- */
-.sec-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px; margin: 40px 2px 4px; }
-.sec-head h2 { font-family: var(--font-d); font-size: 1.625rem; line-height: 1.15; letter-spacing: -0.02em; margin: 0; font-weight: 750; }
+.sec-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px; margin: 64px 2px 6px; padding-top: 22px; border-top: 1px solid var(--line-2); }
+.sec-kicker { flex-basis: 100%; font-size: 0.8125rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--state); }
+#essentials .sec-head { margin-top: 40px; }
+.sec-head h2 { font-family: var(--font-d); font-size: 1.875rem; line-height: 1.15; letter-spacing: -0.02em; margin: 0; font-weight: 750; }
 .sec-head .count { color: var(--text-3); font-size: 0.875rem; font-weight: 600; white-space: nowrap; }
-.sec-blurb { color: var(--text-2); font-size: 0.9688rem; margin: 0 2px 14px; }
+.sec-blurb { color: var(--text-2); font-size: 0.9688rem; margin: 0 2px 20px; }
 
 /* ---------- my ballot (glance) ---------- */
 .glance h3 { font-size: 0.8125rem; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; color: var(--text-3); margin: 16px 0 4px; }
@@ -122,7 +139,7 @@ strong { font-weight: 650; }
 .item-head .q { color: var(--text-2); font-size: 1.0625rem; }
 .gist { margin-top: 12px; font-size: 1.0312rem; color: var(--text); }
 
-.part { margin-top: 18px; }
+.part { margin-top: 22px; }
 .part > .h { font-size: 0.8125rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--text-3); margin-bottom: 8px; }
 
 .yn { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
@@ -315,13 +332,14 @@ footer p + p { margin-top: 6px; }
 @media (max-width: 35em) {
   .tiles { gap: 8px; }
   .tile { padding: 12px; }
-  .tile .big { font-size: 1.5rem; }
+  .tile .big { font-size: 1.375rem; }
   .tile .big small { display: block; margin: 0; font-size: 0.8125rem; }
   .rows > li { grid-template-columns: 1fr; gap: 2px; }
   .yn, .fa, .parties, .ag-sides { grid-template-columns: 1fr; }
   .item-head h3 { font-size: 1.5rem; }
   .brow { grid-template-columns: 1fr auto; grid-template-areas: "l v" "t t"; gap: 4px 12px; }
-  .card { padding: 16px; }
+  .card { padding: 18px; }
+  .item + .item { margin-top: 24px; }
 }
 
 .print-only { display: none; }
@@ -329,7 +347,7 @@ footer p + p { margin-top: 6px; }
   @page { margin: 0.5in; }
   body { background: #fff; color: #000; font-size: 9pt; }
   .wrap { padding: 0; }
-  .top, .hero, #essentials, #big, #ballot, footer, .sec-blurb, .glance .actions, .glance .progress, .glance .chev, #glance-count { display: none !important; }
+  .top, .hero, #essentials, #big, #ballot, footer, .dswitch, .sec-blurb, .glance .actions, .glance .progress, .glance .chev, #glance-count { display: none !important; }
   .print-only { display: block; color: #333; margin: 0 0 8px; font-size: 9pt; }
   .sec-head { margin: 0 0 2px; }
   .sec-head h2 { font-size: 15pt; color: #000; }
@@ -340,3 +358,6 @@ footer p + p { margin-top: 6px; }
   .glance a.row .t small { display: inline; color: #555; font-size: 8.2pt; margin-left: 6px; }
   .glance a.row .p, .glance a.row .p.set { color: #000; font-size: 9.4pt; }
 }
+
+/* Long words at very large text sizes: wrap instead of pushing the page sideways. */
+h1, h2, h3, .cand-name { min-width: 0; max-width: 100%; overflow-wrap: break-word; hyphens: auto; -webkit-hyphens: auto; }

@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>2026 Ballot · Sioux Falls</title>
-<meta name="description" content="Quick-reference guide to the Nov 3, 2026 South Dakota ballot for downtown Sioux Falls (District 15).">
+<meta name="description" content="Quick-reference guide to the Nov 3, 2026 South Dakota ballot for Sioux Falls: downtown (District 15) and southeast Sioux Falls / Brandon (District 2).">
 <style>
 :root {
   color-scheme: dark;
@@ -85,15 +85,30 @@ strong { font-weight: 650; }
 .hero h1 { font-family: var(--font-d); font-size: 2.25rem; line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 8px; font-weight: 750; }
 .hero .where { color: var(--text-2); font-size: 1.0625rem; }
 
-.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(6.25em, 1fr)); gap: 10px; margin: 20px 0 0; }
-.tile { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; }
+.tiles { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0 0; }
+.tile { flex: 1 1 auto; min-width: 0; background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; }
 .tile .lbl { font-size: 0.8125rem; color: var(--text-3); font-weight: 600; }
 .tile .big { font-family: var(--font-d); font-size: 1.875rem; font-weight: 750; letter-spacing: -0.02em; line-height: 1.2; margin-top: 4px; font-variant-numeric: tabular-nums; }
 .tile .big small { font-size: 0.9375rem; font-weight: 500; color: var(--text-3); margin-left: 4px; letter-spacing: 0; }
 
+/* ---------- district switch ---------- */
+.hero-switch { margin-top: 18px; }
+.hero-switch .lbl { font-size: 0.8125rem; font-weight: 650; color: var(--text-3); margin-bottom: 8px; }
+.dswitch { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(9.5em, 100%), 1fr)); gap: 6px; padding: 5px; border-radius: 14px; background: var(--card); border: 1px solid #2a2a31; }
+.sec-blurb + .dswitch { margin: -6px 0 20px; }
+.dswitch button { display: flex; flex-direction: column; align-items: flex-start; gap: 1px; text-align: left; cursor: pointer; border: 0; border-radius: 10px; padding: 10px 14px; background: transparent; color: var(--text-2); -webkit-tap-highlight-color: transparent; }
+.dswitch button b { font-size: 1rem; font-weight: 700; color: var(--text); }
+.dswitch button small { font-size: 0.8125rem; }
+.dswitch button[aria-pressed="true"] { background: var(--text); color: #3a3a42; }
+.dswitch button[aria-pressed="true"] b { color: #000; }
+
 /* ---------- generic card ---------- */
-.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 18px; }
-.card + .card, .block + .block { margin-top: 12px; }
+.card { background: var(--card); border: 1px solid #2a2a31; border-radius: var(--r); padding: 20px; }
+.card + .card { margin-top: 14px; }
+.block + .block { margin-top: 12px; }
+/* Race cards: clear air between them so each reads as its own unit. */
+.item + .item { margin-top: 28px; }
+.item-head { padding-bottom: 2px; }
 
 .rows > li { display: grid; grid-template-columns: 7em 1fr; gap: 12px; padding: 11px 0; border-top: 1px solid var(--line); font-size: 0.9688rem; }
 .rows > li:first-child { border-top: 0; padding-top: 2px; }
@@ -102,10 +117,12 @@ strong { font-weight: 650; }
 .rows .v .sub { color: var(--text-2); }
 
 /* ---------- section headings ---------- */
-.sec-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px; margin: 40px 2px 4px; }
-.sec-head h2 { font-family: var(--font-d); font-size: 1.625rem; line-height: 1.15; letter-spacing: -0.02em; margin: 0; font-weight: 750; }
+.sec-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px; margin: 64px 2px 6px; padding-top: 22px; border-top: 1px solid var(--line-2); }
+.sec-kicker { flex-basis: 100%; font-size: 0.8125rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--state); }
+#essentials .sec-head { margin-top: 40px; }
+.sec-head h2 { font-family: var(--font-d); font-size: 1.875rem; line-height: 1.15; letter-spacing: -0.02em; margin: 0; font-weight: 750; }
 .sec-head .count { color: var(--text-3); font-size: 0.875rem; font-weight: 600; white-space: nowrap; }
-.sec-blurb { color: var(--text-2); font-size: 0.9688rem; margin: 0 2px 14px; }
+.sec-blurb { color: var(--text-2); font-size: 0.9688rem; margin: 0 2px 20px; }
 
 /* ---------- my ballot (glance) ---------- */
 .glance h3 { font-size: 0.8125rem; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; color: var(--text-3); margin: 16px 0 4px; }
@@ -134,7 +151,7 @@ strong { font-weight: 650; }
 .item-head .q { color: var(--text-2); font-size: 1.0625rem; }
 .gist { margin-top: 12px; font-size: 1.0312rem; color: var(--text); }
 
-.part { margin-top: 18px; }
+.part { margin-top: 22px; }
 .part > .h { font-size: 0.8125rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--text-3); margin-bottom: 8px; }
 
 .yn { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
@@ -327,13 +344,14 @@ footer p + p { margin-top: 6px; }
 @media (max-width: 35em) {
   .tiles { gap: 8px; }
   .tile { padding: 12px; }
-  .tile .big { font-size: 1.5rem; }
+  .tile .big { font-size: 1.375rem; }
   .tile .big small { display: block; margin: 0; font-size: 0.8125rem; }
   .rows > li { grid-template-columns: 1fr; gap: 2px; }
   .yn, .fa, .parties, .ag-sides { grid-template-columns: 1fr; }
   .item-head h3 { font-size: 1.5rem; }
   .brow { grid-template-columns: 1fr auto; grid-template-areas: "l v" "t t"; gap: 4px 12px; }
-  .card { padding: 16px; }
+  .card { padding: 18px; }
+  .item + .item { margin-top: 24px; }
 }
 
 .print-only { display: none; }
@@ -341,7 +359,7 @@ footer p + p { margin-top: 6px; }
   @page { margin: 0.5in; }
   body { background: #fff; color: #000; font-size: 9pt; }
   .wrap { padding: 0; }
-  .top, .hero, #essentials, #big, #ballot, footer, .sec-blurb, .glance .actions, .glance .progress, .glance .chev, #glance-count { display: none !important; }
+  .top, .hero, #essentials, #big, #ballot, footer, .dswitch, .sec-blurb, .glance .actions, .glance .progress, .glance .chev, #glance-count { display: none !important; }
   .print-only { display: block; color: #333; margin: 0 0 8px; font-size: 9pt; }
   .sec-head { margin: 0 0 2px; }
   .sec-head h2 { font-size: 15pt; color: #000; }
@@ -352,6 +370,9 @@ footer p + p { margin-top: 6px; }
   .glance a.row .t small { display: inline; color: #555; font-size: 8.2pt; margin-left: 6px; }
   .glance a.row .p, .glance a.row .p.set { color: #000; font-size: 9.4pt; }
 }
+
+/* Long words at very large text sizes: wrap instead of pushing the page sideways. */
+h1, h2, h3, .cand-name { min-width: 0; max-width: 100%; overflow-wrap: break-word; hyphens: auto; -webkit-hyphens: auto; }
 </style>
 </head>
 <body>
@@ -365,12 +386,13 @@ footer p + p { margin-top: 6px; }
   <section class="hero">
     <div class="kicker">General election · Tue, Nov 3</div>
     <h1>Your ballot, at a glance.</h1>
-    <p class="where">Downtown Sioux Falls · District 15 · Minnehaha County</p>
+    <p class="where" data-where>Sioux Falls · Minnehaha County</p>
+    <div class="hero-switch"><div class="lbl">Where do you live?</div><div data-switch></div></div>
 
     <div class="tiles">
       <div class="tile"><div class="lbl">Election Day</div><div class="big" id="days">–</div></div>
       <div class="tile"><div class="lbl">Polls</div><div class="big">7–7<small>a.m.–p.m. CT</small></div></div>
-      <div class="tile"><div class="lbl">On the ballot</div><div class="big" id="n-items">18</div></div>
+      <div class="tile"><div class="lbl">Items</div><div class="big" id="n-items">18</div></div>
     </div>
   </section>
 
@@ -392,7 +414,7 @@ footer p + p { margin-top: 6px; }
 
   <section class="block" id="ballot-head">
     <div class="sec-head"><h2>My ballot</h2><span class="count" id="glance-count"></span></div>
-    <p class="print-only">General election · Tue, Nov 3 · Polls 7 a.m.–7 p.m. CT · Bring a photo ID</p>
+    <p class="print-only"><span data-where></span> · General election · Tue, Nov 3 · Polls 7 a.m.–7 p.m. CT · Bring a photo ID</p>
     <div class="card glance">
       <div class="progress"><i id="progress"></i></div>
       <div id="glance"></div>
@@ -449,6 +471,11 @@ window.GUIDE = {
     updated: "November 2, 2026",
     takeLabel: "Parker's take",
     picksLabel: "Parker's picks",
+    // Only the Legislature races differ by district. Share a link ending in ?d=2 to open on District 2.
+    districts: [
+      { id: "15", label: "Downtown", sub: "District 15", where: "Downtown Sioux Falls · District 15 · Minnehaha County" },
+      { id: "2", label: "Southeast", sub: "District 2 · incl. Brandon", where: "Southeast Sioux Falls · District 2 · Minnehaha County" },
+    ],
     takeByline: "One person's opinion.",
   },
 
@@ -706,11 +733,12 @@ Running mate Steven McCleerey is a Sisseton crop and livestock farmer, a state r
     {
       id: "legislature",
       picks: ``,
-      title: "Legislature · District 15",
-      blurb: `Downtown is District 15. Near 14th St, Cliff Ave, or I-29? <a href="https://vip.sdsos.gov/VIPLogin.aspx" target="_blank" rel="noopener">Confirm your district</a>.`,
+      title: "Legislature",
+      blurb: `The only races that change with your address. Downtown is District 15; far southeast Sioux Falls (around 41st St &amp; Six Mile Rd) and Brandon are District 2. Not sure? <a href="https://vip.sdsos.gov/VIPLogin.aspx" target="_blank" rel="noopener">Confirm your district</a>.`,
       items: [
         {
           id: "sd15-senate",
+          district: "15",
           kind: "race",
           title: "State Senate",
           sub: "District 15 · Vote for 1 · 2-year term",
@@ -727,6 +755,7 @@ Running mate Steven McCleerey is a Sisseton crop and livestock farmer, a state r
         },
         {
           id: "sd15-house",
+          district: "15",
           kind: "race",
           title: "State House",
           sub: "District 15 · Vote for up to 2 · 2-year term",
@@ -741,6 +770,39 @@ Running mate Steven McCleerey is a Sisseton crop and livestock farmer, a state r
           ],
           contrast: `All four talk affordability and data centers. Democrats lean toward state programs (meals, child care, wages). Republicans lean toward spending restraint, property rights, and local control. The current state penitentiary is in District 15.`,
           sources: [SRC.list, SRC.sfs, { label: "KELO: House District 15", url: "https://www.aol.co.uk/articles/running-house-district-15-192459000.html" }],
+          take: ``,
+        },
+        {
+          id: "sd2-senate",
+          district: "2",
+          kind: "race",
+          title: "State Senate",
+          sub: "District 2 · Vote for 1 · 2-year term · Unopposed",
+          q: "District 2's one seat in the state Senate.",
+          gist: `The Legislature writes state law and the budget. Republicans hold more than two-thirds of both chambers. Only one candidate is running, so he wins either way. You can vote for him or leave it blank.`,
+          cands: [
+            { name: "John Sjaarda", party: "R", note: "Current state rep", line: "Farmer near Valley Springs; District 2 state rep since 2023.", more: `Won the June Republican primary over fellow District 2 Rep. David Kull, about 62% to 38%. No Democrat filed for the seat.` },
+          ],
+          sources: [SRC.list, { label: "SDPB: Meet John Sjaarda", url: "https://www.sdpb.org/2026-08-31/meet-the-candidates-john-sjaarda" }],
+          take: ``,
+        },
+        {
+          id: "sd2-house",
+          district: "2",
+          kind: "race",
+          title: "State House",
+          sub: "District 2 · Vote for up to 2 · 2-year term · Open seats",
+          votes: 2,
+          q: "District 2's two seats in the state House.",
+          gist: `Top two vote-getters win. Both seats are open because Reps. Sjaarda and Kull ran for the Senate. You can pick two, one, or none, and mix parties.`,
+          cands: [
+            { name: "Adam Long", party: "R", line: "Owner of 605 Signs. Navy and Air Force veteran, former police officer, Split Rock volunteer firefighter.", focus: ["Review budgets before new taxes", "Property tax relief via spending control", "Public schools and school choice", "Data centers can't stick locals with costs"], more: `Top vote-getter in the GOP primary. Wants zero-based budgeting, where programs justify their budgets from scratch. Says data centers and tax incentives should be transparent and shouldn't leave taxpayers or utility customers with long-term costs.` },
+            { name: "Manuel Luschas", party: "R", line: "Electrical engineer (22 years in communications hardware) and farmer; moved to Brandon from Silicon Valley in 2020.", focus: ["Property tax reform", "Property rights", "Limit digital surveillance", "Self-funded campaign"], more: `Property taxes are his top issue; he says rising bills could force people on fixed incomes to sell their homes. He runs as an outsider, criticizing the outgoing District 2 Republicans for siding with "big money corporate interests."` },
+            { name: "Blake Rife", party: "D", line: "Nurse; previously a teacher and rancher.", focus: ["More competitive schools", "Rural health care access", "Workforce and affordability", "More competition among cattle buyers"], more: `Won the Democratic primary. Points to Brandon's schools as a model and wants SD to compete harder on education. Wants rural areas to have good health care so people can keep working.` },
+          ],
+          chart: { type: "bars", title: "2026 Republican primary (top two advanced)", rows: [{ label: "Long", v: 32.6, c: "R" }, { label: "Luschas", v: 26.6, c: "R" }, { label: "Lane", v: 22.7, c: "muted" }, { label: "Hill", v: 18.2, c: "muted" }], max: 40, note: "Rife was the Democratic nominee." },
+          contrast: `Both Republicans lead with property taxes and spending restraint; Luschas runs as more of an outsider. Rife focuses on schools, health care, and workers. With two votes, you can split between parties.`,
+          sources: [SRC.list, { label: "SDPB: Meet Adam Long", url: "https://www.sdpb.org/2026-08-31/meet-the-candidates-adam-long" }, { label: "SDPB: Meet Manuel Luschas", url: "https://www.sdpb.org/2026-08-31/meet-the-candidates-manuel-luschas" }, { label: "SDPB: Meet Blake Rife", url: "https://www.sdpb.org/2026-08-31/meet-the-candidates-blake-rife" }, { label: "Minnehaha County primary returns", url: "https://web.minnehahacounty.gov/dept/au/election/electionReturns/26primary.php" }],
           take: ``,
         },
       ],
@@ -1138,6 +1200,18 @@ Lawmakers have tried to raise the bar before. Amendment X (55% to amend) failed 
   }
   renderBig(G.national);
 
+  /* ---------- district (only the legislature races differ) ---------- */
+  const DKEY = "sd2026-district";
+  const DISTS = G.meta.districts || [];
+  let district = DISTS.length ? DISTS[0].id : "";
+  try { district = localStorage.getItem(DKEY) || district; } catch (e) {}
+  const qd = new URLSearchParams(location.search).get("d");
+  if (qd && DISTS.some((d) => d.id === qd)) { district = qd; try { localStorage.setItem(DKEY, qd); } catch (e) {} }
+  if (!DISTS.some((d) => d.id === district) && DISTS.length) district = DISTS[0].id;
+  const live = (it) => !it.district || it.district === district;
+  const switchHTML = () => (DISTS.length > 1 ? `<div class="dswitch" role="group" aria-label="Where do you live?">${DISTS.map((d) => `<button type="button" data-district="${esc(d.id)}" aria-pressed="false"><b>${esc(d.label)}</b><small>${esc(d.sub)}</small></button>`).join("")}</div>` : "");
+  document.querySelectorAll("[data-switch]").forEach((el) => (el.innerHTML = switchHTML()));
+
   /* ---------- render ---------- */
   const ballot = document.getElementById("ballot");
   const all = [];
@@ -1145,11 +1219,12 @@ Lawmakers have tried to raise the bar before. Amendment X (55% to amend) failed 
     const s = document.createElement("section");
     s.className = "block";
     s.id = sec.id;
-    const n = sec.items.length;
-    s.innerHTML = `<div class="sec-head"><h2>${esc(sec.title)}</h2><span class="count">${n} ${sec.id === "amendments" ? (n === 1 ? "question" : "questions") : n === 1 ? "race" : "races"}</span></div>${sec.blurb ? `<p class="sec-blurb">${html(sec.blurb)}</p>` : ""}`;
+    s.innerHTML = `<div class="sec-head"><span class="sec-kicker">Ballot · ${G.sections.indexOf(sec) + 1} of ${G.sections.length}</span><h2>${esc(sec.title)}</h2><span class="count" data-count="${sec.id}"></span></div>${sec.blurb ? `<p class="sec-blurb">${html(sec.blurb)}</p>` : ""}${sec.items.some((i) => i.district) ? switchHTML() : ""}`;
     sec.items.forEach((it) => {
       all.push({ ...it, section: sec });
-      s.appendChild(renderItem(it));
+      const el = renderItem(it);
+      if (it.district) el.dataset.district = it.district;
+      s.appendChild(el);
     });
     if (sec.picks && sec.picks.trim()) {
       const f = document.createElement("aside");
@@ -1167,6 +1242,28 @@ Lawmakers have tried to raise the bar before. Amendment X (55% to amend) failed 
   const byId = Object.fromEntries(all.map((i) => [i.id, i]));
   const maxFor = (it) => (typeof it.votes === "number" ? it.votes : 1);
   const get = (id) => (Array.isArray(picks[id]) ? picks[id] : []);
+
+  /* ---------- district switch ---------- */
+  function applyDistrict() {
+    const d = DISTS.find((x) => x.id === district);
+    document.querySelectorAll("article[data-district]").forEach((el) => (el.hidden = el.dataset.district !== district));
+    document.querySelectorAll(".dswitch button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.district === district));
+    if (d) document.querySelectorAll("[data-where]").forEach((el) => (el.textContent = d.where));
+    G.sections.forEach((sec) => {
+      const n = sec.items.filter(live).length;
+      const c = document.querySelector(`[data-count="${sec.id}"]`);
+      if (c) c.textContent = `${n} ${sec.id === "amendments" ? (n === 1 ? "question" : "questions") : n === 1 ? "race" : "races"}`;
+    });
+    document.getElementById("n-items").textContent = all.filter(live).length;
+    sync();
+  }
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest(".dswitch button");
+    if (!b) return;
+    district = b.dataset.district;
+    try { localStorage.setItem(DKEY, district); } catch (err) {}
+    applyDistrict();
+  });
 
   /* ---------- picks ---------- */
   document.addEventListener("click", (e) => {
@@ -1228,21 +1325,21 @@ Lawmakers have tried to raise the bar before. Amendment X (55% to amend) failed 
     let h = "";
     G.sections.forEach((sec) => {
       h += `<h3>${esc(sec.title)}</h3>`;
-      sec.items.forEach((it) => {
+      sec.items.filter(live).forEach((it) => {
         const cur = get(it.id);
         const sub = it.kind === "measure" ? it.sub : "";
         h += `<a class="row" href="#${it.id}"><span class="t">${esc(it.title)}${sub ? `<small>${esc(sub)}</small>` : ""}</span><span class="p ${cur.length ? "set" : ""}">${cur.length ? cur.map((v) => { const k = partyOf(it, v); return `${k ? `<span class="dot ${k}"></span>` : ""}${esc(v)}`; }).join(", ") : "—"}<span class="chev">›</span></span></a>`;
       });
     });
     document.getElementById("glance").innerHTML = h;
-    const done = all.filter((i) => get(i.id).length).length;
-    document.getElementById("pick-count").textContent = `${done}/${all.length}`;
-    document.getElementById("glance-count").textContent = `${done} of ${all.length} marked`;
-    document.getElementById("progress").style.width = `${(done / all.length) * 100}%`;
+    const act = all.filter(live);
+    const done = act.filter((i) => get(i.id).length).length;
+    document.getElementById("pick-count").textContent = `${done}/${act.length}`;
+    document.getElementById("glance-count").textContent = `${done} of ${act.length} marked`;
+    document.getElementById("progress").style.width = `${(done / act.length) * 100}%`;
   }
-  sync();
+  applyDistrict();
 
-  document.getElementById("n-items").textContent = all.length;
   document.getElementById("updated").textContent = `Updated ${G.meta.updated}.`;
 })();
 </script>

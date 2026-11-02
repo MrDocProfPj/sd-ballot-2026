@@ -188,6 +188,18 @@
   }
   renderBig(G.national);
 
+  /* ---------- district (only the legislature races differ) ---------- */
+  const DKEY = "sd2026-district";
+  const DISTS = G.meta.districts || [];
+  let district = DISTS.length ? DISTS[0].id : "";
+  try { district = localStorage.getItem(DKEY) || district; } catch (e) {}
+  const qd = new URLSearchParams(location.search).get("d");
+  if (qd && DISTS.some((d) => d.id === qd)) { district = qd; try { localStorage.setItem(DKEY, qd); } catch (e) {} }
+  if (!DISTS.some((d) => d.id === district) && DISTS.length) district = DISTS[0].id;
+  const live = (it) => !it.district || it.district === district;
+  const switchHTML = () => (DISTS.length > 1 ? `<div class="dswitch" role="group" aria-label="Where do you live?">${DISTS.map((d) => `<button type="button" data-district="${esc(d.id)}" aria-pressed="false"><b>${esc(d.label)}</b><small>${esc(d.sub)}</small></button>`).join("")}</div>` : "");
+  document.querySelectorAll("[data-switch]").forEach((el) => (el.innerHTML = switchHTML()));
+
   /* ---------- render ---------- */
   const ballot = document.getElementById("ballot");
   const all = [];
@@ -195,11 +207,12 @@
     const s = document.createElement("section");
     s.className = "block";
     s.id = sec.id;
-    const n = sec.items.length;
-    s.innerHTML = `<div class="sec-head"><h2>${esc(sec.title)}</h2><span class="count">${n} ${sec.id === "amendments" ? (n === 1 ? "question" : "questions") : n === 1 ? "race" : "races"}</span></div>${sec.blurb ? `<p class="sec-blurb">${html(sec.blurb)}</p>` : ""}`;
+    s.innerHTML = `<div class="sec-head"><span class="sec-kicker">Ballot · ${G.sections.indexOf(sec) + 1} of ${G.sections.length}</span><h2>${esc(sec.title)}</h2><span class="count" data-count="${sec.id}"></span></div>${sec.blurb ? `<p class="sec-blurb">${html(sec.blurb)}</p>` : ""}${sec.items.some((i) => i.district) ? switchHTML() : ""}`;
     sec.items.forEach((it) => {
       all.push({ ...it, section: sec });
-      s.appendChild(renderItem(it));
+      const el = renderItem(it);
+      if (it.district) el.dataset.district = it.district;
+      s.appendChild(el);
     });
     if (sec.picks && sec.picks.trim()) {
       const f = document.createElement("aside");
@@ -217,6 +230,28 @@
   const byId = Object.fromEntries(all.map((i) => [i.id, i]));
   const maxFor = (it) => (typeof it.votes === "number" ? it.votes : 1);
   const get = (id) => (Array.isArray(picks[id]) ? picks[id] : []);
+
+  /* ---------- district switch ---------- */
+  function applyDistrict() {
+    const d = DISTS.find((x) => x.id === district);
+    document.querySelectorAll("article[data-district]").forEach((el) => (el.hidden = el.dataset.district !== district));
+    document.querySelectorAll(".dswitch button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.district === district));
+    if (d) document.querySelectorAll("[data-where]").forEach((el) => (el.textContent = d.where));
+    G.sections.forEach((sec) => {
+      const n = sec.items.filter(live).length;
+      const c = document.querySelector(`[data-count="${sec.id}"]`);
+      if (c) c.textContent = `${n} ${sec.id === "amendments" ? (n === 1 ? "question" : "questions") : n === 1 ? "race" : "races"}`;
+    });
+    document.getElementById("n-items").textContent = all.filter(live).length;
+    sync();
+  }
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest(".dswitch button");
+    if (!b) return;
+    district = b.dataset.district;
+    try { localStorage.setItem(DKEY, district); } catch (err) {}
+    applyDistrict();
+  });
 
   /* ---------- picks ---------- */
   document.addEventListener("click", (e) => {
@@ -278,20 +313,20 @@
     let h = "";
     G.sections.forEach((sec) => {
       h += `<h3>${esc(sec.title)}</h3>`;
-      sec.items.forEach((it) => {
+      sec.items.filter(live).forEach((it) => {
         const cur = get(it.id);
         const sub = it.kind === "measure" ? it.sub : "";
         h += `<a class="row" href="#${it.id}"><span class="t">${esc(it.title)}${sub ? `<small>${esc(sub)}</small>` : ""}</span><span class="p ${cur.length ? "set" : ""}">${cur.length ? cur.map((v) => { const k = partyOf(it, v); return `${k ? `<span class="dot ${k}"></span>` : ""}${esc(v)}`; }).join(", ") : "—"}<span class="chev">›</span></span></a>`;
       });
     });
     document.getElementById("glance").innerHTML = h;
-    const done = all.filter((i) => get(i.id).length).length;
-    document.getElementById("pick-count").textContent = `${done}/${all.length}`;
-    document.getElementById("glance-count").textContent = `${done} of ${all.length} marked`;
-    document.getElementById("progress").style.width = `${(done / all.length) * 100}%`;
+    const act = all.filter(live);
+    const done = act.filter((i) => get(i.id).length).length;
+    document.getElementById("pick-count").textContent = `${done}/${act.length}`;
+    document.getElementById("glance-count").textContent = `${done} of ${act.length} marked`;
+    document.getElementById("progress").style.width = `${(done / act.length) * 100}%`;
   }
-  sync();
+  applyDistrict();
 
-  document.getElementById("n-items").textContent = all.length;
   document.getElementById("updated").textContent = `Updated ${G.meta.updated}.`;
 })();
