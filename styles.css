@@ -280,14 +280,12 @@ details.bio > div { margin-top: 6px; padding: 11px 13px; border-radius: 10px; ba
 details.bio p { font-size: 0.9375rem; color: var(--text-2); }
 details.bio p + p { margin-top: 7px; }
 
-/* ---------- section picks footer ---------- */
-.sec-picks { margin-top: 12px; padding: 14px 16px; border-radius: var(--r); background: #120f08; border: 1px solid #4a3410; }
-.sec-picks .h { font-size: 0.8125rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: #ffc65c; margin-bottom: 6px; }
-.sec-picks li { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 2px 12px; padding: 7px 0; border-top: 1px solid #2c2210; font-size: 0.9375rem; }
-.sec-picks li:first-child { border-top: 0; }
-.sec-picks li span { color: var(--text-2); }
-.sec-picks li b { color: var(--text); font-weight: 650; text-align: right; }
-.sec-picks p { font-size: 0.9375rem; color: var(--text-2); margin-top: 8px; }
+/* ---------- author's pick ---------- */
+.mypick { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin-top: 14px; padding: 10px 14px; border-radius: 12px; background: #120f08; border: 1px solid #4a3410; }
+.mp-l { font-size: 0.8125rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: #ffc65c; }
+.mp-v { display: inline-flex; align-items: center; gap: 7px; font-weight: 700; font-size: 0.9688rem; color: var(--text); }
+.mp-v .dot { width: 8px; height: 8px; box-shadow: none; }
+.mypick p { flex-basis: 100%; font-size: 0.9375rem; color: var(--text-2); }
 
 /* ---------- take ---------- */
 .take { border-radius: 12px; padding: 14px 16px; background: linear-gradient(180deg, #17120a, #0f0c07); border: 1px solid #5a3f10; }

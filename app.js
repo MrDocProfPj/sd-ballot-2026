@@ -70,6 +70,17 @@
       ${v.note ? `<div class="cn">${esc(v.note)}</div>` : ""}</div>`;
   }
 
+  /* ---------- the author's pick (small line under "Ask yourself") ---------- */
+  function myPick(it) {
+    const raw = Array.isArray(it.pick) ? it.pick : it.pick ? [it.pick] : [];
+    if (!raw.length) return "";
+    const chips = raw.map((v) => {
+      const k = it.kind === "measure" ? (/^yes$/i.test(v) ? "yes" : /^no$/i.test(v) ? "no" : "") : ((it.cands || []).find((c) => c.name === v) || {}).party || "";
+      return `<span class="mp-v ${k}">${k ? `<span class="dot"></span>` : ""}${esc(v)}</span>`;
+    }).join("");
+    return `<div class="mypick"><span class="mp-l">${esc(G.meta.picksLabel || "My pick")}${raw.length > 1 ? "s" : ""}</span>${chips}${it.pickWhy ? `<p>${html(it.pickWhy)}</p>` : ""}</div>`;
+  }
+
   /* ---------- item ---------- */
   function optionsFor(it) {
     if (it.kind === "measure") return [{ v: "Yes", cls: "yes" }, { v: "No", cls: "no" }];
@@ -127,6 +138,7 @@
     if (it.votes && typeof it.votes === "object") b += `<div class="part">${votes(it.votes)}</div>`;
     if (it.money) b += `<div class="part">${bars({ ...it.money, max: Math.max(...it.money.rows.map((r) => r.v)) * 1.05 })}</div>`;
     if (it.ask) b += part("Ask yourself", bullets(it.ask, "asks"));
+    b += myPick(it);
 
     if (it.take && it.take.trim()) {
       b += `<div class="part take"><div class="h">${esc(G.meta.takeLabel)}</div>${it.take.split(/\n\s*\n/).map((p) => `<p>${html(p)}</p>`).join("")}<div class="by">${esc(G.meta.takeByline)}</div></div>`;
@@ -214,17 +226,6 @@
       if (it.district) el.dataset.district = it.district;
       s.appendChild(el);
     });
-    if (sec.picks && sec.picks.trim()) {
-      const f = document.createElement("aside");
-      f.className = "sec-picks";
-      const lines = sec.picks.trim().split(/\n/).map((l) => l.trim()).filter(Boolean);
-      const rows = lines.filter((l) => /^[^:]{1,40}:\s/.test(l));
-      const notes = lines.filter((l) => !/^[^:]{1,40}:\s/.test(l));
-      f.innerHTML = `<div class="h">${esc(G.meta.picksLabel || "My picks")} · ${esc(sec.title)}</div>
-        ${rows.length ? `<ul>${rows.map((l) => { const i = l.indexOf(":"); return `<li><span>${esc(l.slice(0, i))}</span><b>${html(l.slice(i + 1).trim())}</b></li>`; }).join("")}</ul>` : ""}
-        ${notes.map((n) => `<p>${html(n)}</p>`).join("")}`;
-      s.appendChild(f);
-    }
     ballot.appendChild(s);
   });
   const byId = Object.fromEntries(all.map((i) => [i.id, i]));
