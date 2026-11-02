@@ -34,10 +34,11 @@ window.GUIDE = {
     updated: "November 2, 2026",
     takeLabel: "Parker's take",
     picksLabel: "Parker's pick",
-    // Only the Legislature races differ by district. Share a link ending in ?d=2 to open on District 2.
+    // Legislature + county races differ by place. Share a link ending in ?d=2 or ?d=17 to open on that tab.
     districts: [
       { id: "15", label: "Downtown", sub: "District 15", where: "Downtown Sioux Falls · District 15 · Minnehaha County" },
-      { id: "2", label: "Southeast", sub: "District 2 · incl. Brandon", where: "Southeast Sioux Falls · District 2 · Minnehaha County" },
+      { id: "2", label: "Southeast", sub: "District 2", where: "Southeast Sioux Falls · District 2 · Minnehaha County" },
+      { id: "17", label: "Vermillion", sub: "District 17", where: "Vermillion · District 17 · Clay County" },
     ],
     takeByline: "One person's opinion.",
   },
@@ -303,7 +304,7 @@ Running mate Steven McCleerey is a Sisseton crop and livestock farmer, a state r
     {
       id: "legislature",
       title: "Legislature",
-      blurb: `The only races that change with your address. Downtown is District 15; far southeast Sioux Falls (around 41st St &amp; Six Mile Rd) and Brandon are District 2. Not sure? <a href="https://vip.sdsos.gov/VIPLogin.aspx" target="_blank" rel="noopener">Confirm your district</a>.`,
+      blurb: `These change with your address. Downtown Sioux Falls is District 15; far southeast Sioux Falls (around 41st St &amp; Six Mile Rd) and Brandon are District 2; Vermillion is District 17. Not sure? <a href="https://vip.sdsos.gov/VIPLogin.aspx" target="_blank" rel="noopener">Confirm your district</a>.`,
       items: [
         {
           id: "sd15-senate",
@@ -378,6 +379,42 @@ Running mate Steven McCleerey is a Sisseton crop and livestock farmer, a state r
           pick: "",
     take: ``,
         },
+        {
+          id: "sd17-senate",
+          district: "17",
+          kind: "race",
+          title: "State Senate",
+          sub: "District 17 · Vote for 1 · 2-year term · Unopposed",
+          q: "District 17's one seat in the state Senate.",
+          gist: `The Legislature writes state law and the budget. Republicans hold more than two-thirds of both chambers. Only one candidate is running, so she wins either way. You can vote for her or leave it blank.`,
+          cands: [
+            { name: "Sydney Davis", party: "R", note: "Incumbent", line: "Burbank nurse anesthetist and cattle producer. State senator since 2023; state rep 2021–2023.", focus: ["Rural health, EMS & mental health", "Workforce, housing & ag", "School safety & student teachers", "Child care"], more: `Vice chair of Senate Health and Human Services. Beat Republican Jeffrey Church 77–23 in the June primary; no Democrat filed.\n\nSD Farmers Union, which opposes Amendments I and L, gave her its 2026 Service to Agriculture award.` },
+          ],
+          sources: [SRC.list, { label: "Legislature: Sen. Sydney Davis", url: "https://sdlegislature.gov/Legislators/Profile/4852/Detail" }, { label: "Ballotpedia: Sydney Davis", url: "https://ballotpedia.org/Sydney_Davis" }],
+          pick: "",
+          take: ``,
+        },
+        {
+          id: "sd17-house",
+          district: "17",
+          kind: "race",
+          title: "State House",
+          sub: "District 17 · Vote for up to 2 · 2-year term",
+          votes: 2,
+          q: "District 17's two seats in the state House.",
+          gist: `Top two win. You can pick two, one, or none, and mix parties. Rep. Kassin is running again; the other seat is open. Vermillion votes more Democratic than the rest of the district, which includes Union County towns like Dakota Dunes, North Sioux City, and Elk Point. Republicans hold both seats now.`,
+          cands: [
+            { name: "Chris Kassin", party: "R", note: "Incumbent", line: "Vermillion. VP of external relations at the USD Foundation; small-business co-owner. In the House since 2023.", focus: ["Balanced budgets", "Education & student-teacher stipends", "Property tax relief", "Less regulation"], site: "https://www.chriskassin.com/", more: `Sits on House Appropriations, the budget committee. Former Mount Marty athletic director and USD basketball assistant. Describes himself as pro-life, pro-gun rights, and fiscally conservative. Top vote-getter in the GOP primary.` },
+            { name: "Troy Redler", party: "R", line: "Dakota Dunes pharmacist; owns a long-term-care pharmacy.", focus: ["Housing & property taxes", "Rural & long-term care", "Local control of schools", "Child care & workforce"], site: "https://votetroyredler.com/", more: `First run for office. Says the citizen initiative process should be protected and that changes making it harder to use deserve caution, which is relevant to Amendment L.` },
+            { name: "Austin Brunick", party: "D", line: "Elk Point tech worker running as a pro-worker candidate.", focus: ["School funding, pre-K & meals", "Protect Medicaid & rural care", "Higher minimum wage", "Pause AI & crypto data centers"], site: "https://www.austinbrunick.com/issues", more: `Supports Medicare for All and a less regressive tax system, and opposes right-to-work laws. Signed a pledge to refuse data-center money and tax breaks and to defend local power to regulate or pause projects.` },
+            { name: "Leslie Gerrish", party: "D", line: "Vermillion small-business owner; United Way of Vermillion board president; master's in public affairs.", focus: ["School funding & teacher pay", "Health care & elder care", "More county revenue options", "1-year pause on big data centers"], site: "https://www.leslieforhouse.com/", more: `Wants an economy that works for workers, families, seniors, and small businesses, and more ways for counties to raise money besides sales tax. Signed the same data-center pledge as Brunick.` },
+          ],
+          chart: { type: "bars", title: "2026 Republican primary (share of votes, pick-2 race)", rows: [{ label: "Kassin", v: 60.2, c: "R" }, { label: "Redler", v: 31.2, c: "R" }, { label: "Schiro", v: 8.7, c: "muted" }], max: 70, note: "Brunick and Gerrish were the only Democrats who filed." },
+          contrast: `Data centers are the local flashpoint: Clay County weighed zoning for one this summer, and residents pushed back over water, power, and rents. Both Democrats signed a pledge to pause and regulate them. The Republicans lead with budgets, property taxes, and health access.`,
+          sources: [SRC.list, { label: "Clay County voting guide (candidates)", url: "https://theheartlandcommunityledger.com/clay-county-voting-information/#district-17-candidates" }, { label: "Ballotpedia: House District 17", url: "https://ballotpedia.org/South_Dakota_House_of_Representatives_District_17" }, { label: "Vote411: District 17 House answers", url: "https://onyourballot.vote411.org/race-detail.do?id=28540353" }, { label: "DRG News: data center pledge", url: "https://drgnews.com/2026/08/28/some-south-dakota-legislative-candidates-sign-data-center-accountability-pledge-urge-other-candidates-to-do-so-as-well/" }, { label: "The Volante: Clay County data center talks", url: "https://volanteonline.com/2026/09/clay-county-discusses-potential-data-center/" }],
+          pick: "",
+          take: ``,
+        },
       ],
     },
 
@@ -389,6 +426,7 @@ Running mate Steven McCleerey is a Sisseton crop and livestock farmer, a state r
       items: [
         {
           id: "county-commission",
+          district: ["15", "2"],
           kind: "race",
           title: "County Commission",
           sub: "Vote for up to 3 · 4-year terms · Countywide",
@@ -408,6 +446,7 @@ Running mate Steven McCleerey is a Sisseton crop and livestock farmer, a state r
         },
         {
           id: "county-auditor",
+          district: ["15", "2"],
           kind: "race",
           title: "County Auditor",
           sub: "Vote for 1 · 4-year term",
@@ -423,6 +462,7 @@ Running mate Steven McCleerey is a Sisseton crop and livestock farmer, a state r
         },
         {
           id: "conservation",
+          district: ["15", "2"],
           kind: "race",
           title: "Conservation District",
           sub: "Vote for up to 2 · Nonpartisan",
@@ -433,6 +473,33 @@ Running mate Steven McCleerey is a Sisseton crop and livestock farmer, a state r
           sources: [SRC.list],
           pick: "",
     take: ``,
+        },
+      ],
+    },
+
+    /* ------------------------------------------------------------ */
+    {
+      id: "clay",
+      title: "Clay County",
+      blurb: "Auditor, sheriff, and register of deeds were unopposed, so they're not on the ballot. The county's half-cent sales tax is a separate vote on Nov. 17.",
+      items: [
+        {
+          id: "clay-commission",
+          district: "17",
+          kind: "race",
+          title: "County Commission",
+          sub: "Vote for up to 2 · 4-year terms · Countywide",
+          votes: 2,
+          q: "The county's governing board.",
+          gist: `Sets the county budget and property-tax levy, handles zoning (including data-center rules), and funds county services. Two incumbents are running for two seats, so both will win.`,
+          callout: `<strong>Coming up Nov. 17:</strong> the commission passed a half-cent county sales tax while cutting the 2027 budget. Residents petitioned it to a separate public vote.`,
+          cands: [
+            { name: "Geoffrey Gray-Lobe", party: "D", note: "Incumbent", line: "Vermillion. Former credit union communications director and home builder; National Park Service science background.", focus: ["Affordable housing", "More diverse jobs", "Open county government", "Protect land, water & the Missouri River"], site: "https://www.graylobeforclaycounty.org/about", more: `Opposed deeper cuts to community services in the 2027 budget, and opposed the county sales tax before it was petitioned to a vote.` },
+            { name: "David Thiesse", party: "R", note: "Incumbent · vice chair", line: "Vermillion realtor; executive director of the Vermillion Housing Authority; former Clay County deputy.", more: `No 2026 platform found. Sits on county and city-county planning and zoning, which handle data-center rules. In budget talks he stressed reserves, bridge and flood costs, and finding cuts if the sales tax fails.` },
+          ],
+          sources: [{ label: "Clay County voting guide", url: "https://theheartlandcommunityledger.com/clay-county-voting-information/" }, { label: "Clay County commissioners", url: "https://www.claycountysd.org/userfiles/files/Commissioner%20Agendas%20and%20Notices/Clay%20County%20Commissioners.pdf" }, { label: "County budget & sales tax meeting record", url: "https://www.noticeregistry.com/south-dakota/notice/public-hearing-vermillion-248857" }, { label: "Clay County Auditor & elections", url: "https://www.claycountysd.org/auditorelections.cfm" }],
+          pick: "",
+          take: ``,
         },
       ],
     },

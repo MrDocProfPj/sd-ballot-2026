@@ -200,7 +200,7 @@
   }
   renderBig(G.national);
 
-  /* ---------- district (only the legislature races differ) ---------- */
+  /* ---------- where you live (legislature + county races, and some logistics, differ) ---------- */
   const DKEY = "sd2026-district";
   const DISTS = G.meta.districts || [];
   let district = DISTS.length ? DISTS[0].id : "";
@@ -208,7 +208,8 @@
   const qd = new URLSearchParams(location.search).get("d");
   if (qd && DISTS.some((d) => d.id === qd)) { district = qd; try { localStorage.setItem(DKEY, qd); } catch (e) {} }
   if (!DISTS.some((d) => d.id === district) && DISTS.length) district = DISTS[0].id;
-  const live = (it) => !it.district || it.district === district;
+  const inArea = (d) => !d || [].concat(d).map(String).includes(district);
+  const live = (it) => inArea(it.district);
   const switchHTML = () => (DISTS.length > 1 ? `<div class="dswitch" role="group" aria-label="Where do you live?">${DISTS.map((d) => `<button type="button" data-district="${esc(d.id)}" aria-pressed="false"><b>${esc(d.label)}</b><small>${esc(d.sub)}</small></button>`).join("")}</div>` : "");
   document.querySelectorAll("[data-switch]").forEach((el) => (el.innerHTML = switchHTML()));
 
@@ -219,11 +220,11 @@
     const s = document.createElement("section");
     s.className = "block";
     s.id = sec.id;
-    s.innerHTML = `<div class="sec-head"><span class="sec-kicker">Ballot · ${G.sections.indexOf(sec) + 1} of ${G.sections.length}</span><h2>${esc(sec.title)}</h2><span class="count" data-count="${sec.id}"></span></div>${sec.blurb ? `<p class="sec-blurb">${html(sec.blurb)}</p>` : ""}${sec.items.some((i) => i.district) ? switchHTML() : ""}`;
+    s.innerHTML = `<div class="sec-head"><span class="sec-kicker"></span><h2>${esc(sec.title)}</h2><span class="count" data-count="${sec.id}"></span></div>${sec.blurb ? `<p class="sec-blurb">${html(sec.blurb)}</p>` : ""}${sec.items.some((i) => i.district) ? switchHTML() : ""}`;
     sec.items.forEach((it) => {
       all.push({ ...it, section: sec });
       const el = renderItem(it);
-      if (it.district) el.dataset.district = it.district;
+      if (it.district) el.dataset.district = [].concat(it.district).join(" ");
       s.appendChild(el);
     });
     ballot.appendChild(s);
@@ -235,7 +236,13 @@
   /* ---------- district switch ---------- */
   function applyDistrict() {
     const d = DISTS.find((x) => x.id === district);
-    document.querySelectorAll("article[data-district]").forEach((el) => (el.hidden = el.dataset.district !== district));
+    document.querySelectorAll("[data-district]:not(button)").forEach((el) => (el.hidden = !el.dataset.district.split(" ").includes(district)));
+    const shown = G.sections.filter((sec) => sec.items.some(live));
+    G.sections.forEach((sec) => {
+      const el = document.getElementById(sec.id);
+      el.hidden = !shown.includes(sec);
+      el.querySelector(".sec-kicker").textContent = `Ballot · ${shown.indexOf(sec) + 1} of ${shown.length}`;
+    });
     document.querySelectorAll(".dswitch button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.district === district));
     if (d) document.querySelectorAll("[data-where]").forEach((el) => (el.textContent = d.where));
     G.sections.forEach((sec) => {
@@ -312,7 +319,7 @@
       w.querySelector("[data-clear]").hidden = !cur.length;
     });
     let h = "";
-    G.sections.forEach((sec) => {
+    G.sections.filter((sec) => sec.items.some(live)).forEach((sec) => {
       h += `<h3>${esc(sec.title)}</h3>`;
       sec.items.filter(live).forEach((it) => {
         const cur = get(it.id);
