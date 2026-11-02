@@ -133,7 +133,7 @@ Also served in the Navy and as a national park ranger; has lived in SD since 201
           },
           ask: ["Party-aligned vote, or an independent not tied to either party?", "How much does Senate seniority matter to you?"],
           sources: [SRC.list, { label: "KOTA: Bengs interview", url: "https://www.kotatv.com/2026/07/14/special-interview-independent-senate-candidate-brian-bengs-outlines-campaign-priorities-south-dakota-race/" }, { label: "SD News Watch: primary guide", url: "https://www.sdnewswatch.org/2026-primary-election-top-races/" }],
-          pick: "",
+          pick: "Brian Bengs",
     take: ``,
         },
         {
@@ -160,7 +160,7 @@ As head of USDA Rural Development in SD, she oversaw federal loans and grants fo
           },
           ask: ["Whose approach to safety, the border, health care, and costs is closer to yours?", "Support the President's agenda, or check it?"],
           sources: [SRC.list, { label: "Dakota News Now: Gronli & Jackley", url: "https://www.dakotanewsnow.com/2026/09/29/inside-race-gronli-jackley-share-top-priorities-congress/" }, { label: "SD Searchlight: Jackley wins primary", url: SL + "/2026/06/02/south-dakota-attorney-general-marty-jackley-wins-bid-for-republican-us-house-nomination/" }],
-          pick: "",
+          pick: "Nikki Gronli",
     take: ``,
         },
       ],
@@ -199,7 +199,7 @@ Running mate Steven McCleerey is a Sisseton crop and livestock farmer, a state r
           },
           ask: ["Sales tax swap or more state school funding to cut property taxes?", "Happy with the state's direction, or want a change?"],
           sources: [SRC.list, { label: "AP: Rhoden profile", url: "https://apnews.com/article/9ae7c9443328c9c257d3f5da798a0ca5" }, { label: "Governor's property tax plan", url: "https://news.sd.gov/news?id=news_kb_article_view&sysparm_article=KB0045970" }, { label: "Dakota News Now: Ahlers & Rhoden", url: "https://www.dakotanewsnow.com/2026/09/16/inside-race-dan-ahlers-larry-rhoden-talk-key-issues-with-dakota-news-now/" }, { label: "Official primary canvass", url: "https://sdsos.gov/elections-voting/upcoming-elections/general-information/2026/Assets/State%20Canvass%20and%20Certificate.pdf" }],
-          pick: "",
+          pick: "Dan Ahlers",
     take: ``,
         },
         {
@@ -217,7 +217,7 @@ Running mate Steven McCleerey is a Sisseton crop and livestock farmer, a state r
           impact: ["Sets election procedures for every county.", "Oversees citizenship checks on voter rolls (see Amendment J)."],
           ask: ["Would you want ballots counted by hand, even if slower?"],
           sources: [SRC.list, { label: "AP: the Secretary of State race", url: "https://apnews.com/article/9e825ab74c155b0690de73f78bb3dfde" }],
-          pick: "",
+          pick: "Terrence Davis",
     take: ``,
         },
         {
@@ -231,7 +231,7 @@ Running mate Steven McCleerey is a Sisseton crop and livestock farmer, a state r
             { name: "Lance Russell", party: "R", line: "State's attorney for Fall River and Oglala Lakota counties; 12 years in the Legislature.", focus: ["Wants to undo some past criminal justice reforms, over time"], more: `Hot Springs attorney and former state House and Senate member. He'd replace Marty Jackley, who is running for the U.S. House.` },
           ],
           sources: [SRC.list, { label: "KOTA: Q&A with Lance Russell", url: "https://www.kotatv.com/2026/09/09/qa-south-dakotas-next-attorney-general-aims-undo-criminal-justice-reforms-just-not-right-away/" }],
-          pick: "",
+          pick: "Lance Russell",
     take: ``,
         },
         {
@@ -246,7 +246,7 @@ Running mate Steven McCleerey is a Sisseton crop and livestock farmer, a state r
             { name: "Tom Cool", party: "D", line: "Nearly four decades leading the Council on College Admissions in SD." },
           ],
           sources: [SRC.list, { label: "SD Searchlight: auditor race", url: SL + "/voter-guides/contests/2026-south-dakota-state-auditor-race/" }],
-          pick: "",
+          pick: "Catherine Barranco",
     take: ``,
         },
         {
@@ -261,7 +261,7 @@ Running mate Steven McCleerey is a Sisseton crop and livestock farmer, a state r
             { name: "Margaret Kuipers", party: "D", line: "Sioux Falls; former treasurer of the SD EMS Association." },
           ],
           sources: [SRC.list, { label: "SD Searchlight: treasurer race", url: SL + "/voter-guides/contests/2026-south-dakota-state-treasurer-race/" }],
-          pick: "",
+          pick: "Margaret Kuipers",
     take: ``,
         },
         {
@@ -276,7 +276,7 @@ Running mate Steven McCleerey is a Sisseton crop and livestock farmer, a state r
             { name: "Raeann Mettler", party: "D", line: "Research specialist in Indigenous public health at Missouri Breaks Industries Research." },
           ],
           sources: [SRC.list, { label: "SD Searchlight: School & Public Lands race", url: SL + "/voter-guides/contests/2026-commissioner-of-school-and-public-lands-race/" }],
-          pick: "",
+          pick: "Raeann Mettler",
     take: ``,
         },
         {
@@ -293,7 +293,7 @@ Running mate Steven McCleerey is a Sisseton crop and livestock farmer, a state r
           national: { text: `Big tech companies plan about $700B in U.S. data-center spending in 2026 (AP), and who pays for the extra power has become a campaign issue in several states. In SD, the PUC is where that gets decided.` },
           ask: ["How should the PUC balance low rates, reliability, and new demand?"],
           sources: [SRC.list, { label: "SD Searchlight: PUC race", url: SL + "/voter-guides/contests/2026-public-utilities-commission-race/" }],
-          pick: "",
+          pick: "Frank Kloucek",
     take: ``,
         },
       ],
@@ -320,7 +320,7 @@ Running mate Steven McCleerey is a Sisseton crop and livestock farmer, a state r
           contrast: `Lawrence didn't answer the 2026 candidate questionnaires, so her current platform is thin. That's a gap in published info, not proof of no positions.`,
           ask: ["Would you rather your senator be part of the majority or the minority, and why?"],
           sources: [SRC.list, SRC.sfs, { label: "Vote411: District 15 Senate", url: "https://onyourballot.vote411.org/race-detail.do?id=28540352" }],
-          pick: "",
+          pick: "Erik Muckey",
     take: ``,
         },
         {
@@ -340,7 +340,7 @@ Running mate Steven McCleerey is a Sisseton crop and livestock farmer, a state r
           ],
           contrast: `All four talk affordability and data centers. Democrats lean toward state programs (meals, child care, wages). Republicans lean toward spending restraint, property rights, and local control. The current state penitentiary is in District 15.`,
           sources: [SRC.list, SRC.sfs, { label: "KELO: House District 15", url: "https://www.aol.co.uk/articles/running-house-district-15-192459000.html" }],
-          pick: "",
+          pick: ["Kadyn Wittman", "June CopperStad"],
     take: ``,
         },
         {
@@ -403,7 +403,7 @@ Running mate Steven McCleerey is a Sisseton crop and livestock farmer, a state r
             { name: "Curt Soehl", party: "I", line: "Recently finished a term on the Sioux Falls City Council (Central District). Retired fire captain." },
           ],
           sources: [SRC.list, SRC.scout],
-          pick: "",
+          pick: ["Kenny Anderson Jr.", "Curt Soehl"],
     take: ``,
         },
         {
@@ -418,7 +418,7 @@ Running mate Steven McCleerey is a Sisseton crop and livestock farmer, a state r
             { name: "Curt Deedrich", party: "D", line: "Former Illinois farmer, village board member, and township assessor.", focus: ["Elections, auditing, staffing", "More counting machines and space"] },
           ],
           sources: [SRC.list, SRC.scout, { label: "Minnehaha County Auditor", url: "https://minnehahacounty.gov/dept/au/au.php" }],
-          pick: "",
+          pick: "Curt Deedrich",
     take: ``,
         },
         {
@@ -481,7 +481,7 @@ In 2025, while Congress debated big Medicaid cuts, SD lawmakers voted to put thi
       ],
     },
     sources: [SRC.pamphlet, SRC.ag, { label: "Legislature: HJR 5001", url: "https://sdlegislature.gov/Session/Bill/25683" }, { label: "SD Searchlight: AG vs sponsors on effect", url: SL + "/2026/09/18/ballot-measure-could-auto-repeal-medicaid-expansion-attorney-general-says-in-contrast-to-lawmakers/" }, { label: "SD Searchlight: opponents' coalition", url: SL + "/2026/09/29/passing-medicaid-ballot-measure-would-reduce-services-and-spike-insurance-costs-opponents-say/" }, SRC.gop, SRC.sddp],
-    pick: "",
+    pick: "No",
     take: ``,
   },
 
@@ -514,7 +514,7 @@ In 2025, while Congress debated big Medicaid cuts, SD lawmakers voted to put thi
       ],
     },
     sources: [SRC.pamphlet, SRC.ag, { label: "Legislature: SJR 503", url: "https://sdlegislature.gov/Session/Bill/25856" }, { label: "SD Searchlight: Amendment J explained", url: SL + "/2026/10/16/closing-a-loophole-or-fearmongering-about-noncitizens-voting-south-dakotas-amendment-j/" }, { label: "Secretary of State: 2024 roll review", url: "https://sdsos.gov/about-the-office/assets/Press%20Releases/SOSResponsetoACLU10.11.2024.pdf" }, { label: "Voter challenge law (SDCL 12-4-59)", url: "https://sdlegislature.gov/Statutes/12-4-59" }, SRC.gop, SRC.sddp],
-    pick: "",
+    pick: "No",
     take: ``,
   },
 
@@ -547,7 +547,7 @@ In 2025, while Congress debated big Medicaid cuts, SD lawmakers voted to put thi
       ],
     },
     sources: [SRC.pamphlet, SRC.ag, { label: "Legislature: SJR 505", url: "https://sdlegislature.gov/Session/Bill/25479" }, { label: "SD Searchlight: Amendment K explained", url: SL + "/2026/10/15/amendment-k-lawmakers-ask-voters-to-approve-investing-unclaimed-property-proceeds-in-a-trust-fund/" }, { label: "SD Treasurer: search your unclaimed property", url: "https://sdtreasurer.gov/unclaimed-property/" }, SRC.gop, SRC.sddp],
-    pick: "",
+    pick: "Yes",
     take: ``,
   },
 
@@ -582,7 +582,7 @@ Lawmakers have tried to raise the bar before. Amendment X (55% to amend) failed 
       ],
     },
     sources: [SRC.pamphlet, SRC.ag, { label: "Legislature: HJR 5003", url: "https://sdlegislature.gov/Session/Bill/25663" }, { label: "SD Searchlight: Amendment L explained", url: SL + "/2026/10/14/protecting-the-state-constitution-or-protecting-voters-right-to-change-it-amendment-l-explained/" }, { label: "SD Searchlight: campaign money", url: SL + "/2026/10/23/national-groups-power-spending-against-higher-bar-for-constitutional-amendments/" }, { label: "Past ballot question results", url: "https://sdsos.gov/elections-voting/assets/Archive/Prior%20to%202026/BallotQuestions%20%282024%29.pdf" }, SRC.gop, SRC.sddp],
-    pick: "",
+    pick: "No",
     take: ``,
   },
 ];
